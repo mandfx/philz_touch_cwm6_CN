@@ -1,6 +1,5 @@
-__<center><big>PhilZ Touch Recovery 6 (ClockworkMod 6 based / Advanced Edition)</big></center>__
+Philz_touch 汉化版
 
-.
+Fork于Philz-cwm6
 
-__Home page__
-http://forum.xda-developers.com/showthread.php?t=2201860
+中文字库来自xiaolu，在此感谢

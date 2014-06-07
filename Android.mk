@@ -36,25 +36,30 @@ include $(commands_recovery_local_path)/boardconfig/BoardConfig.mk
 
 # LOCAL_CPP_EXTENSION := .c
 
+ifeq ($(findstring fontcn,$(BOARD_USE_CUSTOM_RECOVERY_FONT)),fontcn)
+  LOCAL_CFLAGS += -DUSE_CHINESE_FONT
+  src_suffix := _cn
+endif
+
 LOCAL_SRC_FILES := \
-    recovery.c \
+    recovery$(src_suffix).c \
     bootloader.c \
-    install.c \
+    install$(src_suffix).c \
     roots.c \
     ui.c \
     mounts.c \
-    extendedcommands.c \
-    advanced_functions.c \
+    extendedcommands$(src_suffix).c \
+    advanced_functions$(src_suffix).c \
     digest/md5.c \
     recovery_settings.c \
-    nandroid.c \
+    nandroid$(src_suffix).c \
     reboot.c \
     ../../system/core/toolbox/dynarray.c \
     ../../system/core/toolbox/newfs_msdos.c \
     firmware.c \
-    edifyscripting.c \
+    edifyscripting$(src_suffix).c \
     prop.c \
-    adb_install.c \
+    adb_install$(src_suffix).c \
     verifier.c \
     ../../system/vold/vdc.c \
     propsrvc/legacy_property_service.c
@@ -129,8 +134,9 @@ endif
 
 BOARD_RECOVERY_CHAR_WIDTH := $(shell echo $(BOARD_USE_CUSTOM_RECOVERY_FONT) | cut -d _  -f 2 | cut -d . -f 1 | cut -d x -f 1)
 BOARD_RECOVERY_CHAR_HEIGHT := $(shell echo $(BOARD_USE_CUSTOM_RECOVERY_FONT) | cut -d _  -f 2 | cut -d . -f 1 | cut -d x -f 2)
+RECOVERY_BUILD_DATE := $(shell date +"%Y%m%d")
+LOCAL_CFLAGS += -DBOARD_RECOVERY_CHAR_WIDTH=$(BOARD_RECOVERY_CHAR_WIDTH) -DBOARD_RECOVERY_CHAR_HEIGHT=$(BOARD_RECOVERY_CHAR_HEIGHT) -DRECOVERY_BUILD_DATE="$(RECOVERY_BUILD_DATE)"
 
-LOCAL_CFLAGS += -DBOARD_RECOVERY_CHAR_WIDTH=$(BOARD_RECOVERY_CHAR_WIDTH) -DBOARD_RECOVERY_CHAR_HEIGHT=$(BOARD_RECOVERY_CHAR_HEIGHT)
 
 BOARD_RECOVERY_DEFINES := BOARD_RECOVERY_SWIPE BOARD_HAS_NO_SELECT_BUTTON BOARD_UMS_LUNFILE BOARD_RECOVERY_ALWAYS_WIPES BOARD_RECOVERY_HANDLES_MOUNT BOARD_TOUCH_RECOVERY RECOVERY_EXTEND_NANDROID_MENU TARGET_USE_CUSTOM_LUN_FILE_PATH TARGET_DEVICE TARGET_RECOVERY_FSTAB BOARD_NATIVE_DUALBOOT BOARD_NATIVE_DUALBOOT_SINGLEDATA BOARD_RECOVERY_SWIPE_SWAPXY
 BOARD_RECOVERY_DEFINES += BOOTLOADER_CMD_ARG BOARD_HAS_SLOW_STORAGE BOARD_USE_MTK_LAYOUT BOARD_MTK_BOOT_LABEL BOARD_RECOVERY_USE_LIBTAR BOARD_HAS_NO_MULTIUSER_SUPPORT
