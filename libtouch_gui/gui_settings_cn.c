@@ -1985,8 +1985,8 @@ static void show_time_settings_menu() {
         ui_format_gui_menu(item_timezone_m, "时区偏移", tmp);
 
         if (use_dst_time.value)
-            ui_format_gui_menu(item_dst, "日光节约时制", "(已关闭)");
-        else ui_format_gui_menu(item_dst, "日光节约时制", "(已开启)");
+            ui_format_gui_menu(item_dst, "日光节约时制", "(已开启)");
+        else ui_format_gui_menu(item_dst, "日光节约时制", "(已关闭)");
 
         int chosen_item = get_menu_selection(headers, list, 0, 0);
         if (chosen_item == GO_BACK)

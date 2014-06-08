@@ -2109,7 +2109,7 @@ void misc_nandroid_menu() {
 
     int fmt;
     for (;;) {
-        if (enable_md5sum.value) ui_format_gui_menu(item_md5, "MD5校验", "(已关闭)");
+        if (enable_md5sum.value) ui_format_gui_menu(item_md5, "MD5校验", "(已开启)");
         else ui_format_gui_menu(item_md5, "MD5校验", "(已打开)");
 
         if (volume_for_path("/preload") == NULL)
@@ -2117,29 +2117,29 @@ void misc_nandroid_menu() {
         else if (nandroid_add_preload.value) ui_format_gui_menu(item_preload, "Include /preload", "(x)");
         else ui_format_gui_menu(item_preload, "Include /preload", "( )");
 
-        if (twrp_backup_mode.value) ui_format_gui_menu(item_twrp_mode, "TWRP模式", "(已关闭)");
-        else ui_format_gui_menu(item_twrp_mode, "TWRP模式", "(已开启)");
+        if (twrp_backup_mode.value) ui_format_gui_menu(item_twrp_mode, "TWRP模式", "(已开启)");
+        else ui_format_gui_menu(item_twrp_mode, "TWRP模式", "(已关闭)");
 
         if (show_nandroid_size_progress.value)
-            ui_format_gui_menu(item_size_progress, "显示Nandroid进度", "(已关闭)");
-        else ui_format_gui_menu(item_size_progress, "显示Nandroid进度", "(已开启)");
+            ui_format_gui_menu(item_size_progress, "显示Nandroid进度", "(已开启)");
+        else ui_format_gui_menu(item_size_progress, "显示Nandroid进度", "(已关闭)");
         list[3] = item_size_progress;
 
         if (use_nandroid_simple_logging.value)
-            ui_format_gui_menu(item_use_nandroid_simple_logging, "使用简易日志", "(已关闭)");
-        else ui_format_gui_menu(item_use_nandroid_simple_logging, "使用简易日志", "(已开启)");
+            ui_format_gui_menu(item_use_nandroid_simple_logging, "使用简易日志", "(已开启)");
+        else ui_format_gui_menu(item_use_nandroid_simple_logging, "使用简易日志", "(已关闭)");
         list[4] = item_use_nandroid_simple_logging;
 
         hidenandprogress = file_found(hidenandprogress_file);
         if (hidenandprogress) {
-            ui_format_gui_menu(item_nand_progress, "隐藏Nandroid进度", "(已关闭)");
+            ui_format_gui_menu(item_nand_progress, "隐藏Nandroid进度", "(已开启)");
             list[3] = NULL;
             list[4] = NULL;
-        } else ui_format_gui_menu(item_nand_progress, "隐藏Nandroid进度", "(已开启)");
+        } else ui_format_gui_menu(item_nand_progress, "隐藏Nandroid进度", "(已关闭)");
 
         if (nand_prompt_on_low_space.value)
-            ui_format_gui_menu(item_prompt_low_space, "提示空间不足", "(已关闭)");
-        else ui_format_gui_menu(item_prompt_low_space, "提示空间不足", "(已开启)");
+            ui_format_gui_menu(item_prompt_low_space, "提示空间不足", "(已开启)");
+        else ui_format_gui_menu(item_prompt_low_space, "提示空间不足", "(已关闭)");
 
         char ors_volume[PATH_MAX];
         get_ors_backup_volume(ors_volume);
@@ -3042,28 +3042,28 @@ void custom_restore_menu(const char* backup_volume) {
 
         list[LIST_ITEM_VALIDATE] = strdup(">> 开始自定义还原");
 
-        if (reboot_after_nandroid) ui_format_gui_menu(menu_item_tmp, ">> 完成后重启", "(已关闭)");
-        else ui_format_gui_menu(menu_item_tmp, ">> 完成后重启", "(已开启)");
+        if (reboot_after_nandroid) ui_format_gui_menu(menu_item_tmp, ">> 完成后重启", "(已开启)");
+        else ui_format_gui_menu(menu_item_tmp, ">> 完成后重启", "(已关闭)");
         list[LIST_ITEM_REBOOT] = strdup(menu_item_tmp);
 
         if (volume_for_path(BOOT_PARTITION_MOUNT_POINT) != NULL) {
-            if (backup_boot) ui_format_gui_menu(menu_item_tmp, "还原 boot", "(已关闭)");
-            else ui_format_gui_menu(menu_item_tmp, "还原 boot", "(已开启)");
+            if (backup_boot) ui_format_gui_menu(menu_item_tmp, "还原 boot", "(已开启)");
+            else ui_format_gui_menu(menu_item_tmp, "还原 boot", "(已关闭)");
             list[LIST_ITEM_BOOT] = strdup(menu_item_tmp);
         } else {
             list[LIST_ITEM_BOOT] = NULL;
         }
 
         if (volume_for_path("/recovery") != NULL) {
-            if (backup_recovery) ui_format_gui_menu(menu_item_tmp, "还原 recovery", "(已关闭)");
-            else ui_format_gui_menu(menu_item_tmp, "还原 recovery", "(已开启)");
+            if (backup_recovery) ui_format_gui_menu(menu_item_tmp, "还原 recovery", "(已开启)");
+            else ui_format_gui_menu(menu_item_tmp, "还原 recovery", "(已关闭)");
             list[LIST_ITEM_RECOVERY] = strdup(menu_item_tmp);
         } else {
             list[LIST_ITEM_RECOVERY] = NULL;
         }
 
-        if (backup_system) ui_format_gui_menu(menu_item_tmp, "还原 system", "(已关闭)");
-        else ui_format_gui_menu(menu_item_tmp, "还原 system", "(已开启)");
+        if (backup_system) ui_format_gui_menu(menu_item_tmp, "还原 system", "(已开启)");
+        else ui_format_gui_menu(menu_item_tmp, "还原 system", "(已关闭)");
         list[LIST_ITEM_SYSTEM] = strdup(menu_item_tmp);
 
         if (volume_for_path("/preload") != NULL) {
@@ -3074,8 +3074,8 @@ void custom_restore_menu(const char* backup_volume) {
             list[LIST_ITEM_PRELOAD] = NULL;
         }
 
-        if (backup_data) ui_format_gui_menu(menu_item_tmp, "还原 data", "(已关闭)");
-        else ui_format_gui_menu(menu_item_tmp, "还原 data", "(已开启)");
+        if (backup_data) ui_format_gui_menu(menu_item_tmp, "还原 data", "(已开启)");
+        else ui_format_gui_menu(menu_item_tmp, "还原 data", "(已关闭)");
         list[LIST_ITEM_DATA] = strdup(menu_item_tmp);
 
         set_android_secure_path(tmp);
@@ -3084,12 +3084,12 @@ void custom_restore_menu(const char* backup_volume) {
         else ui_format_gui_menu(menu_item_tmp, "还原 and-sec", "( )");
         list[LIST_ITEM_ANDSEC] = strdup(menu_item_tmp);
 
-        if (backup_cache) ui_format_gui_menu(menu_item_tmp, "还原 cache", "(已关闭)");
-        else ui_format_gui_menu(menu_item_tmp, "还原 cache", "(已开启)");
+        if (backup_cache) ui_format_gui_menu(menu_item_tmp, "还原 cache", "(已开启)");
+        else ui_format_gui_menu(menu_item_tmp, "还原 cache", "(已关闭)");
         list[LIST_ITEM_CACHE] = strdup(menu_item_tmp);
 
-        if (backup_sdext) ui_format_gui_menu(menu_item_tmp, "还原 sd-ext", "(已关闭)");
-        else ui_format_gui_menu(menu_item_tmp, "还原 sd-ext", "(已开启)");
+        if (backup_sdext) ui_format_gui_menu(menu_item_tmp, "还原 sd-ext", "(已开启)");
+        else ui_format_gui_menu(menu_item_tmp, "还原 sd-ext", "(已关闭)");
         list[LIST_ITEM_SDEXT] = strdup(menu_item_tmp);
 
         if (volume_for_path("/modem") != NULL) {
@@ -3135,8 +3135,8 @@ void custom_restore_menu(const char* backup_volume) {
 
         if (is_data_media() && !twrp_backup_mode.value) {
             if (backup_data_media)
-                ui_format_gui_menu(menu_item_tmp, "Restore /data/media", "(x)");
-            else ui_format_gui_menu(menu_item_tmp, "Restore /data/media", "( )");
+                ui_format_gui_menu(menu_item_tmp, "还原 /data/media", "(已开启)");
+            else ui_format_gui_menu(menu_item_tmp, "还原 /data/media", "(已关闭)");
             list[LIST_ITEM_DATAMEDIA] = strdup(menu_item_tmp);
         } else {
             list[LIST_ITEM_DATAMEDIA] = NULL;
@@ -3282,28 +3282,28 @@ void custom_backup_menu(const char* backup_volume)
 
         list[LIST_ITEM_VALIDATE] = strdup(">> 开始自定义备份");
 
-        if (reboot_after_nandroid) ui_format_gui_menu(menu_item_tmp, ">> 完成后重启", "(已关闭)");
-        else ui_format_gui_menu(menu_item_tmp, ">> 完成后重启", "(已开启)");
+        if (reboot_after_nandroid) ui_format_gui_menu(menu_item_tmp, ">> 完成后重启", "(已开启)");
+        else ui_format_gui_menu(menu_item_tmp, ">> 完成后重启", "(已关闭)");
         list[LIST_ITEM_REBOOT] = strdup(menu_item_tmp);
 
         if (volume_for_path(BOOT_PARTITION_MOUNT_POINT) != NULL) {
-            if (backup_boot) ui_format_gui_menu(menu_item_tmp, "备份 boot", "(已关闭)");
-            else ui_format_gui_menu(menu_item_tmp, "备份 boot", "(已开启)");
+            if (backup_boot) ui_format_gui_menu(menu_item_tmp, "备份 boot", "(已开启)");
+            else ui_format_gui_menu(menu_item_tmp, "备份 boot", "(已关闭)");
             list[LIST_ITEM_BOOT] = strdup(menu_item_tmp);
         } else {
             list[LIST_ITEM_BOOT] = NULL;
         }
 
         if (volume_for_path("/recovery") != NULL) {
-            if (backup_recovery) ui_format_gui_menu(menu_item_tmp, "备份 recovery", "(已关闭)");
-            else ui_format_gui_menu(menu_item_tmp, "备份 recovery", "(已开启)");
+            if (backup_recovery) ui_format_gui_menu(menu_item_tmp, "备份 recovery", "(已开启)");
+            else ui_format_gui_menu(menu_item_tmp, "备份 recovery", "(已关闭)");
             list[LIST_ITEM_RECOVERY] = strdup(menu_item_tmp);
         } else {
             list[LIST_ITEM_RECOVERY] = NULL;
         }
 
-        if (backup_system) ui_format_gui_menu(menu_item_tmp, "备份 system", "(已关闭)");
-        else ui_format_gui_menu(menu_item_tmp, "备份 system", "(已开启)");
+        if (backup_system) ui_format_gui_menu(menu_item_tmp, "备份 system", "(已开启)");
+        else ui_format_gui_menu(menu_item_tmp, "备份 system", "(已关闭)");
         list[LIST_ITEM_SYSTEM] = strdup(menu_item_tmp);
 
         if (volume_for_path("/preload") != NULL) {
@@ -3314,8 +3314,8 @@ void custom_backup_menu(const char* backup_volume)
             list[LIST_ITEM_PRELOAD] = NULL;
         }
 
-        if (backup_data) ui_format_gui_menu(menu_item_tmp, "备份 data", "(已关闭)");
-        else ui_format_gui_menu(menu_item_tmp, "备份 data", "( 已开启)");
+        if (backup_data) ui_format_gui_menu(menu_item_tmp, "备份 data", "(已开启)");
+        else ui_format_gui_menu(menu_item_tmp, "备份 data", "( 已关闭)");
         list[LIST_ITEM_DATA] = strdup(menu_item_tmp);
 
         set_android_secure_path(tmp);
@@ -3324,12 +3324,12 @@ void custom_backup_menu(const char* backup_volume)
         else ui_format_gui_menu(menu_item_tmp, "备份 and-sec", "( )");
         list[LIST_ITEM_ANDSEC] = strdup(menu_item_tmp);
 
-        if (backup_cache) ui_format_gui_menu(menu_item_tmp, "备份 cache", "(已关闭)");
-        else ui_format_gui_menu(menu_item_tmp, "备份 cache", "(已开启)");
+        if (backup_cache) ui_format_gui_menu(menu_item_tmp, "备份 cache", "(已开启)");
+        else ui_format_gui_menu(menu_item_tmp, "备份 cache", "(已关闭)");
         list[LIST_ITEM_CACHE] = strdup(menu_item_tmp);
 
-        if (backup_sdext) ui_format_gui_menu(menu_item_tmp, "备份 sd-ext", "(已关闭)");
-        else ui_format_gui_menu(menu_item_tmp, "备份 sd-ext", "(已开启)");
+        if (backup_sdext) ui_format_gui_menu(menu_item_tmp, "备份 sd-ext", "(已开启)");
+        else ui_format_gui_menu(menu_item_tmp, "备份 sd-ext", "(已关闭)");
         list[LIST_ITEM_SDEXT] = strdup(menu_item_tmp);
 
         if (volume_for_path("/modem") != NULL) {
@@ -3375,8 +3375,8 @@ void custom_backup_menu(const char* backup_volume)
 
         if (is_data_media() && !twrp_backup_mode.value) {
             if (backup_data_media)
-                ui_format_gui_menu(menu_item_tmp, "Backup /data/media", "(x)");
-            else ui_format_gui_menu(menu_item_tmp, "Backup /data/media", "( )");
+                ui_format_gui_menu(menu_item_tmp, "备份 /data/media", "(已开启)");
+            else ui_format_gui_menu(menu_item_tmp, "备份 /data/media", "(已关闭)");
             list[LIST_ITEM_DATAMEDIA] = strdup(menu_item_tmp);
         } else {
             list[LIST_ITEM_DATAMEDIA] = NULL;
@@ -3918,12 +3918,12 @@ void show_philz_settings_menu()
 
     for (;;) {
         if (check_root_and_recovery.value)
-            ui_format_gui_menu(item_check_root_and_recovery, "退出时验证Root", "(已关闭)");
-        else ui_format_gui_menu(item_check_root_and_recovery, "退出时验证是Root", "(已开启)");
+            ui_format_gui_menu(item_check_root_and_recovery, "退出时验证Root", "(已开启)");
+        else ui_format_gui_menu(item_check_root_and_recovery, "退出时验证是Root", "(已关闭)");
 
         if (auto_restore_settings.value)
-            ui_format_gui_menu(item_auto_restore, "自动还原设置", "(已关闭)");
-        else ui_format_gui_menu(item_auto_restore, "自动还原设置", "(已开启)");
+            ui_format_gui_menu(item_auto_restore, "自动还原设置", "(已开启)");
+        else ui_format_gui_menu(item_auto_restore, "自动还原设置", "(已关闭)");
 
         int chosen_item = get_menu_selection(headers, list, 0, 0);
         if (chosen_item == GO_BACK)
