@@ -2110,7 +2110,7 @@ void misc_nandroid_menu() {
     int fmt;
     for (;;) {
         if (enable_md5sum.value) ui_format_gui_menu(item_md5, "MD5校验", "(已开启)");
-        else ui_format_gui_menu(item_md5, "MD5校验", "(已打开)");
+        else ui_format_gui_menu(item_md5, "MD5校验", "(已关闭)");
 
         if (volume_for_path("/preload") == NULL)
             ui_format_gui_menu(item_preload, "包含 /preload", "N/A");
