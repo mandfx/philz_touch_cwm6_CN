@@ -1252,15 +1252,15 @@ void wipe_data_menu() {
         }
         case 1: {
             //clean for new ROM: formats /data, /datadata, /cache, /system, /preload, /sd-ext, .android_secure
-            if (confirm_selection("Wipe data, system +/- preload?", "Yes, I will install a new ROM!")) {
+            if (confirm_selection("清理数据,系统?", "是的,清除以安装新的刷机包!")) {
                 wipe_data(0);
-                ui_print("-- Wiping system...\n");
+                ui_print("--正在清理system...\n");
                 erase_volume("/system");
                 if (volume_for_path("/preload") != NULL) {
-                    ui_print("-- Wiping preload...\n");
+                    ui_print("--正在清理preload...\n");
                     erase_volume("/preload");
                 }
-                ui_print("Now flash a new ROM!\n");
+                ui_print("安装新的刷机包!\n");
             }
             break;
         }
@@ -4006,7 +4006,7 @@ void show_philz_settings_menu()
             }
             case 8: {
                 ui_print(EXPAND(RECOVERY_MOD_VERSION) "\n");
-                ui_print("Build version: " EXPAND(PHILZ_BUILD) " - " EXPAND(TARGET_COMMON_NAME) "\n");
+                ui_print("编译版本: " EXPAND(PHILZ_BUILD) " - " EXPAND(TARGET_COMMON_NAME) "\n");
                 ui_print("CWM版本: " EXPAND(CWM_BASE_VERSION) "\n");
 #ifdef PHILZ_TOUCH_RECOVERY
                 print_libtouch_version(1);
