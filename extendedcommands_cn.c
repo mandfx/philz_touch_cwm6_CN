@@ -1801,9 +1801,9 @@ int show_advanced_menu() {
             list[index_loki] = NULL;
         } else {
             if (enabled)
-                ui_format_gui_menu(item_loki_toggle_menu, "Loki支持开关", "(已关闭)");
+                ui_format_gui_menu(item_loki_toggle_menu, "Loki支持开关", "(已开启)");
             else
-                ui_format_gui_menu(item_loki_toggle_menu, "LoKi支持开关", "(已开启)");
+                ui_format_gui_menu(item_loki_toggle_menu, "LoKi支持开关", "(已关闭)");
             list[index_loki] = item_loki_toggle_menu;
         }
 #endif

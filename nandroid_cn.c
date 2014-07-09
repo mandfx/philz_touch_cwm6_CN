@@ -866,7 +866,7 @@ static nandroid_restore_handler get_restore_handler(const char *backup_path) {
 }
 
 // include after all static handlers declarations
-#include "nandroid_advanced.c"
+#include "nandroid_advanced_cn.c"
 
 int nandroid_restore_partition_extended(const char* backup_path, const char* mount_point, int umount_when_finished) {
     int ret = 0;

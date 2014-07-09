@@ -1149,7 +1149,7 @@ static void browse_background_image() {
 
     static const char* headers[] = {"选择一个镜像或颜色", "", NULL};
     int list_top_items = 5;
-    char list_prefix[] = "Image from ";
+    char list_prefix[] = "图像来源 ";
     char* list[MAX_NUM_MANAGED_VOLUMES + list_top_items + 1];
     char buf[80];
     memset(list, 0, MAX_NUM_MANAGED_VOLUMES + list_top_items + 1);
@@ -1192,7 +1192,7 @@ static void browse_background_image() {
                 break;
             case 2:
                 write_config_file(PHILZ_SETTINGS_FILE, background_image.key, "default");
-                ui_print("Restart to load PhilZ Touch default background!\n");
+                ui_print("需要重启以加载Philz Touch背景!\n");
                 break;
             case 3:
                 show_background_icon.value ^= 1;
@@ -1985,8 +1985,8 @@ static void show_time_settings_menu() {
         ui_format_gui_menu(item_timezone_m, "时区偏移", tmp);
 
         if (use_dst_time.value)
-            ui_format_gui_menu(item_dst, "日光节约时制", "(已关闭)");
-        else ui_format_gui_menu(item_dst, "日光节约时制", "(已开启)");
+            ui_format_gui_menu(item_dst, "日光节约时制", "(已开启)");
+        else ui_format_gui_menu(item_dst, "日光节约时制", "(已关闭)");
 
         int chosen_item = get_menu_selection(headers, list, 0, 0);
         if (chosen_item == GO_BACK)
@@ -2410,7 +2410,7 @@ static int rom_zip_wrapper(const char* backup_path) {
     }
 
     ui_clear_key_queue();
-    ui_print("Press Back to cancel.\n");
+    ui_print("返回键取消.\n");
     // support dim screen durin zip operation
     struct timeval now;
     time_t last_key_ev;
